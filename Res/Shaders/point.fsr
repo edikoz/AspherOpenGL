@@ -1,0 +1,11 @@
+#version 330 core
+
+uniform vec4 u_color;
+
+//in float len;
+out vec4 out_color;
+
+void main(){
+	//out_color = vec4(len)*u_color;
+	out_color = u_color;
+}

@@ -1,0 +1,26 @@
+#version 330 core
+
+layout (std140) uniform u_BlockTranslateText{
+	vec4 u_translate;
+	vec4 u_fontShift[6];
+};
+
+uniform vec2 u_scale;
+
+layout(location = 0) in vec2 a_Position;
+layout(location = 1) in vec2 a_textCoord;
+
+out vec2 v_textureCoord;
+flat out int v_instanceID;
+
+void main(){
+	v_instanceID = gl_InstanceID;
+	v_textureCoord = a_textCoord;
+	vec2 m_pos = (a_Position*u_scale)+u_translate.xy+vec2(float(gl_InstanceID)*u_scale.x*2.0, 0.0);
+	//vec2 m_pos2 = m_pos-u_scale/20.0*mod(m_pos,2);
+	gl_Position = vec4(
+		m_pos,
+		-1.0,
+		1.0
+	);
+}

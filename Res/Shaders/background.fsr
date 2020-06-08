@@ -1,0 +1,9 @@
+#version 330 core
+
+in vec2 v_Coord;
+uniform float u_sinViewAngle;
+out vec4 out_color;
+
+void main(){
+	out_color =  /*vec4(1.0);*/vec4(v_Coord.y * 0.5 + 0.5);
+}

@@ -1,0 +1,13 @@
+#version 330 core
+
+layout(location = 0) in vec4 a_Position;
+layout(location = 1) in vec2 a_textCoord;
+
+uniform mat4 u_viewMat;
+
+out vec2 v_textureCoord;
+
+void main(){
+	v_textureCoord = a_textCoord;
+	gl_Position = u_viewMat*a_Position;
+}

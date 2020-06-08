@@ -1,0 +1,36 @@
+#version 330 core
+
+in vec2 v_textureCoord;
+
+uniform sampler2D s2D_Texture0;
+
+out vec4 out_color;
+
+void main(){
+	float tc = texture(s2D_Texture0, v_textureCoord).r;
+	vec3 col = vec3(0.0);
+	if (tc > 5.0){
+		col.r = 1.0;
+		col.g = col.b = tc - 5.0;
+	}
+	else if (tc > 4.0){
+		col.r = 1.0;
+		col.g = 1.0 - (tc - 4.0);
+	}
+	else if (tc > 3.0){
+		col.g = 1.0;
+		col.r = tc - 3.0;
+	}
+	else if (tc > 2.0){
+		col.g = 1.0;
+		col.b = 1.0 - (tc - 2.0);
+	}
+	else if (tc > 1.0){
+		col.b = 1.0;
+		col.g = tc - 1.0;
+	}
+	else if (tc > 0.0){
+		col.b = tc - 0.0;
+	}
+	out_color = vec4(col, 1.0);
+}

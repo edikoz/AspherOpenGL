@@ -1,0 +1,16 @@
+#version 330 core
+
+uniform vec2 u_translate;
+uniform vec2 u_scale;
+uniform vec2 u_gap;
+
+layout(location = 0) in vec2 a_Position;
+
+void main(){
+	vec2 m_pos = (a_Position*u_scale)+u_translate+float(gl_InstanceID)*u_gap;
+	gl_Position = vec4(
+		m_pos,
+		-1.0,
+		1.0
+	);
+}

@@ -1,0 +1,12 @@
+#version 330 core
+
+layout(location = 0) in vec4 a_Position;
+
+uniform mat4 u_viewMat;
+
+//out float len;
+
+void main(){
+	//len = sin(a_Position.w * 2.0 * 3.1415926535897932384626433 / 0.000808);
+	gl_Position = u_viewMat * a_Position;//vec4(a_Position.xyz, 1.0);
+}

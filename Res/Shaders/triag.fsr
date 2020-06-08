@@ -1,0 +1,19 @@
+#version 330 core
+
+in vec3 l, n;
+
+out vec4 out_color;
+
+void main(){
+
+	const vec3 diffColor = vec3( 0.0, 0.5, 0.8);
+
+    vec3 n2   = normalize( n );
+    vec3 l2   = normalize( l );
+	float c = max( dot( n2, l2 ), 0.0 );
+    vec3 diff = diffColor * c;
+
+	//out_color = vec4(0.2,0.2,0.2,0.4);
+	//out_color = vec4(0.2,0.2,0.2,1.0);
+	out_color = vec4(diff, 0.8);
+}

@@ -1,0 +1,17 @@
+#version 330 core
+
+layout(location = 0) in vec4 a_Position;
+layout(location = 1) in vec4 a_Normal;
+
+out vec3 l, n;
+
+const vec3 lightPos = vec3(-10.0, 10.0, 10.0);
+
+uniform mat4 u_viewMat;
+
+void main(){
+	l = ( lightPos - a_Position.xyz ); // vector to light source
+    n = ( a_Normal.xyz );              // transformed n
+	
+	gl_Position = u_viewMat*a_Position;
+}

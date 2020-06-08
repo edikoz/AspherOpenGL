@@ -1,0 +1,19 @@
+#version 330 core
+
+in vec2 v_textureCoord;
+flat in int v_instanceID;
+
+layout (std140) uniform u_BlockTranslateText{
+	vec4 u_translate;
+	vec4 u_fontShift[6];
+};
+
+uniform sampler2D s2D_font;
+uniform vec4 u_color;
+
+out vec4 out_color;
+
+void main(){
+float m_texCol = texture(s2D_font, u_fontShift[v_instanceID].xy+v_textureCoord).r;
+out_color = out_color = mix(vec4(0.0), u_color, m_texCol);
+}

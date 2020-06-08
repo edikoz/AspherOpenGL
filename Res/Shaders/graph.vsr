@@ -1,0 +1,9 @@
+#version 330 core
+
+uniform mat4 u_viewMat;
+
+layout(location = 0) in vec4 a_Position;
+
+void main(){
+	gl_Position = u_viewMat*a_Position;
+}
